@@ -38,8 +38,8 @@ let s:matcher = {
 
 function! s:matcher.filter(candidates, context) "{{{
   return filter(a:candidates, "
-        \ get(v:val, 'action__path', v:val.word) !~
-        \    expand('%')")
+        \ fnamemodify(get(v:val, 'action__path', v:val.word), ':p') !=
+        \    expand('%:p')")
 endfunction"}}}
 
 let &cpo = s:save_cpo
